@@ -116,30 +116,3 @@ sensitivity to model fitting and split selection.
 4. A grouped permutation-importance plot.
 5. A subgroup comparison table.
 6. Paired-bootstrap confidence intervals for performance differences.
-
-## Implementation
-
-Create `code/06_performance_metrics.do`.
-
-The initial metric comparisons can use:
-
-- `data/derived/test_predictions.dta`
-- `models/task2_logit_bank.ster`
-- `models/task2_logit_jv.ster`
-
-Ablation and grouped permutation analyses also require:
-
-- `data/derived/analysis_sample.dta`
-- `data/derived/split_assignments.dta`
-
-Retain the existing split and preprocessing. Fit additional models only on
-training borrowers. Save numerical results, figures, and an execution log.
-
-## Priority
-
-Begin with average precision, log loss, Brier score, and calibration.
-Then perform JV-variable ablation and grouped permutation importance.
-
-The performance metrics establish whether improvement extends beyond
-ranking. Ablation and permutation analyses identify which information
-the improvement depends on; they do not establish causal effects.
