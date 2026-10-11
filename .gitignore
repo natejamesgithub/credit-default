@@ -7,9 +7,6 @@ logs/
 # Generated model files
 models/
 
-# Generated outputs
-outputs/
-
 # macOS
 .DS_Store
 
