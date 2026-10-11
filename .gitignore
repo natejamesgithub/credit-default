@@ -1,1 +1,22 @@
+# Raw / local data
 data/
+
+# Generated logs
+logs/
+
+# Generated model files
+models/
+
+# Generated outputs
+outputs/
+
+# macOS
+.DS_Store
+
+# Stata temporary files
+*.tmp
+*.bak
+*.smcl
+
+# Excel temporary lock files
+~$*.xlsx
