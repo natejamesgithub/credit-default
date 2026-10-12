@@ -1,0 +1,11 @@
+predictor,cell1,cell2,cell3
+Young (below age P10),4.89*** (0.08),4.50*** (0.08),2.76*** (0.07)
+Female,-0.93*** (0.04),-0.96*** (0.04),-0.98*** (0.04)
+Low income (bracket 1),2.07*** (0.04),0.56*** (0.04),-0.20*** (0.05)
+Bank credit limit,,-0.70*** (0.01),-0.37*** (0.01)
+Bank credit balance,,1.28*** (0.01),0.79*** (0.01)
+JV NBI credit limit,,,-9.50*** (0.07)
+JV NBI credit balance,,,11.98*** (0.08)
+Default mean (%),6.13,6.13,6.13
+Observations,"1,744,787","1,744,787","1,744,787"
+Pseudo R-squared,0.010,0.030,0.084
