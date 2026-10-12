@@ -1,0 +1,313 @@
+grouping,level,subgroup,model,metric,value,defaults,nondefaults
+age_group,1,Under 31,bank,n,43220,4753,38467
+age_group,1,Under 31,bank,prevalence,.1099722350763535,4753,38467
+age_group,1,Under 31,bank,auc,.6658900007417061,4753,38467
+age_group,1,Under 31,bank,average_precision,.180267114898731,4753,38467
+age_group,1,Under 31,bank,log_loss,.3349094203042174,4753,38467
+age_group,1,Under 31,bank,brier,.0958459072292868,4753,38467
+age_group,1,Under 31,bank,recall_fpr05,.1426467494214181,4753,38467
+age_group,1,Under 31,bank,recall_fpr10,.1973490427098674,4753,38467
+age_group,1,Under 31,bank,precision_top05,.2596020360944007,4753,38467
+age_group,1,Under 31,bank,lift_top05,2.360614348832316,4753,38467
+age_group,1,Under 31,bank,precision_top10,.2299665078710642,4753,38467
+age_group,1,Under 31,bank,lift_top10,2.091132436395412,4753,38467
+age_group,1,Under 31,jv,n,43220,4753,38467
+age_group,1,Under 31,jv,prevalence,.1099722350763535,4753,38467
+age_group,1,Under 31,jv,auc,.7475497850228754,4753,38467
+age_group,1,Under 31,jv,average_precision,.2449493693387184,4753,38467
+age_group,1,Under 31,jv,log_loss,.320213431932048,4753,38467
+age_group,1,Under 31,jv,brier,.0928963885449416,4753,38467
+age_group,1,Under 31,jv,recall_fpr05,.1765200925731117,4753,38467
+age_group,1,Under 31,jv,recall_fpr10,.336208710288239,4753,38467
+age_group,1,Under 31,jv,precision_top05,.3105043961129107,4753,38467
+age_group,1,Under 31,jv,lift_top05,2.823479907426889,4753,38467
+age_group,1,Under 31,jv,precision_top10,.2954650624710782,4753,38467
+age_group,1,Under 31,jv,lift_top10,2.686724174205765,4753,38467
+age_group,2,31-39,bank,n,99149,7962,91187
+age_group,2,31-39,bank,prevalence,.0803033817789388,7962,91187
+age_group,2,31-39,bank,auc,.6804532907383479,7962,91187
+age_group,2,31-39,bank,average_precision,.148248605055283,7962,91187
+age_group,2,31-39,bank,log_loss,.2752083591512642,7962,91187
+age_group,2,31-39,bank,brier,.0733200732496702,7962,91187
+age_group,2,31-39,bank,recall_fpr05,.1593820648078372,7962,91187
+age_group,2,31-39,bank,recall_fpr10,.1738256719417232,7962,91187
+age_group,2,31-39,bank,precision_top05,.2237240266290095,7962,91187
+age_group,2,31-39,bank,lift_top05,2.785985118844469,7962,91187
+age_group,2,31-39,bank,precision_top10,.178975298679757,7962,91187
+age_group,2,31-39,bank,lift_top10,2.22873924752565,7962,91187
+age_group,2,31-39,jv,n,99149,7962,91187
+age_group,2,31-39,jv,prevalence,.0803033817789388,7962,91187
+age_group,2,31-39,jv,auc,.7615965072141774,7962,91187
+age_group,2,31-39,jv,average_precision,.2082098646389123,7962,91187
+age_group,2,31-39,jv,log_loss,.2586245434335234,7962,91187
+age_group,2,31-39,jv,brier,.0706531566656961,7962,91187
+age_group,2,31-39,jv,recall_fpr05,.206103993971364,7962,91187
+age_group,2,31-39,jv,recall_fpr10,.3686259733735243,7962,91187
+age_group,2,31-39,jv,precision_top05,.2717369376639096,7962,91187
+age_group,2,31-39,jv,lift_top05,3.383879129922001,7962,91187
+age_group,2,31-39,jv,precision_top10,.2531773249949567,7962,91187
+age_group,2,31-39,jv,lift_top10,3.1527604365643,7962,91187
+age_group,3,40-49,bank,n,127651,8419,119232
+age_group,3,40-49,bank,prevalence,.0659532631941779,8419,119232
+age_group,3,40-49,bank,auc,.6733863254902279,8419,119232
+age_group,3,40-49,bank,average_precision,.1216451818230098,8419,119232
+age_group,3,40-49,bank,log_loss,.2376190918185192,8419,119232
+age_group,3,40-49,bank,brier,.0610246580633645,8419,119232
+age_group,3,40-49,bank,recall_fpr05,.1665280912222354,8419,119232
+age_group,3,40-49,bank,recall_fpr10,.1665280912222354,8419,119232
+age_group,3,40-49,bank,precision_top05,.1983704167972422,8419,119232
+age_group,3,40-49,bank,lift_top05,3.007742258532458,8419,119232
+age_group,3,40-49,bank,precision_top10,.1472790284070366,8419,119232
+age_group,3,40-49,bank,lift_top10,2.233081750230031,8419,119232
+age_group,3,40-49,jv,n,127651,8419,119232
+age_group,3,40-49,jv,prevalence,.0659532631941779,8419,119232
+age_group,3,40-49,jv,auc,.7642858891473879,8419,119232
+age_group,3,40-49,jv,average_precision,.1804434579633314,8419,119232
+age_group,3,40-49,jv,log_loss,.2243518050275248,8419,119232
+age_group,3,40-49,jv,brier,.0589368050566474,8419,119232
+age_group,3,40-49,jv,recall_fpr05,.2177218196935503,8419,119232
+age_group,3,40-49,jv,recall_fpr10,.3800926475828483,8419,119232
+age_group,3,40-49,jv,precision_top05,.2411469758696334,8419,119232
+age_group,3,40-49,jv,lift_top05,3.656331228974292,8419,119232
+age_group,3,40-49,jv,precision_top10,.21786133960047,8419,119232
+age_group,3,40-49,jv,lift_top10,3.30326854274137,8419,119232
+age_group,4,50-59,bank,n,124625,6390,118235
+age_group,4,50-59,bank,prevalence,.0512738214643932,6390,118235
+age_group,4,50-59,bank,auc,.6696130435176944,6390,118235
+age_group,4,50-59,bank,average_precision,.0970730832544321,6390,118235
+age_group,4,50-59,bank,log_loss,.1983981520716603,6390,118235
+age_group,4,50-59,bank,brier,.0482730662219306,6390,118235
+age_group,4,50-59,bank,recall_fpr05,.1508607198748044,6390,118235
+age_group,4,50-59,bank,recall_fpr10,.1508607198748044,6390,118235
+age_group,4,50-59,bank,precision_top05,.1602444296857004,6390,118235
+age_group,4,50-59,bank,lift_top05,3.12526792638191,6390,118235
+age_group,4,50-59,bank,precision_top10,.1145364277885577,6390,118235
+age_group,4,50-59,bank,lift_top10,2.233818828348827,6390,118235
+age_group,4,50-59,jv,n,124625,6390,118235
+age_group,4,50-59,jv,prevalence,.0512738214643932,6390,118235
+age_group,4,50-59,jv,auc,.7675443397287418,6390,118235
+age_group,4,50-59,jv,average_precision,.1509812382916033,6390,118235
+age_group,4,50-59,jv,log_loss,.1873941924379237,6390,118235
+age_group,4,50-59,jv,brier,.0467641279269925,6390,118235
+age_group,4,50-59,jv,recall_fpr05,.2305164319248826,6390,118235
+age_group,4,50-59,jv,recall_fpr10,.3809076682316119,6390,118235
+age_group,4,50-59,jv,precision_top05,.2017332691381801,6390,118235
+age_group,4,50-59,jv,lift_top05,3.934430151227807,6390,118235
+age_group,4,50-59,jv,precision_top10,.1810303322099182,6390,118235
+age_group,4,50-59,jv,lift_top10,3.530658083202042,6390,118235
+age_group,5,60+,bank,n,128792,4554,124238
+age_group,5,60+,bank,prevalence,.0353593390893844,4554,124238
+age_group,5,60+,bank,auc,.6493241155572301,4554,124238
+age_group,5,60+,bank,average_precision,.067309146548542,4554,124238
+age_group,5,60+,bank,log_loss,.1556058928078588,4554,124238
+age_group,5,60+,bank,brier,.0344462552722834,4554,124238
+age_group,5,60+,bank,recall_fpr05,.1299956082564778,4554,124238
+age_group,5,60+,bank,recall_fpr10,.212340799297321,4554,124238
+age_group,5,60+,bank,precision_top05,.1067316802584539,4554,124238
+age_group,5,60+,bank,lift_top05,3.018486289821431,4554,124238
+age_group,5,60+,bank,precision_top10,.0735680360342724,4554,124238
+age_group,5,60+,bank,lift_top10,2.080582893483971,4554,124238
+age_group,5,60+,jv,n,128792,4554,124238
+age_group,5,60+,jv,prevalence,.0353593390893844,4554,124238
+age_group,5,60+,jv,auc,.767772402047284,4554,124238
+age_group,5,60+,jv,average_precision,.1216095749399309,4554,124238
+age_group,5,60+,jv,log_loss,.1471137147661803,4554,124238
+age_group,5,60+,jv,brier,.0332670045318401,4554,124238
+age_group,5,60+,jv,recall_fpr05,.2617479139218269,4554,124238
+age_group,5,60+,jv,recall_fpr10,.4062362758014932,4554,124238
+age_group,5,60+,jv,precision_top05,.1667960863488119,4554,124238
+age_group,5,60+,jv,lift_top05,4.717172058198548,4554,124238
+age_group,5,60+,jv,precision_top10,.1343271993167171,4554,124238
+age_group,5,60+,jv,lift_top10,3.798917139744979,4554,124238
+young,0,Other borrowers,bank,n,480217,27325,452892
+young,0,Other borrowers,bank,prevalence,.0569013591772053,27325,452892
+young,0,Other borrowers,bank,auc,.6679276042124636,27325,452892
+young,0,Other borrowers,bank,average_precision,.1077615249681522,27325,452892
+young,0,Other borrowers,bank,log_loss,.2132059301100438,27325,452892
+young,0,Other borrowers,bank,brier,.0531257817945098,27325,452892
+young,0,Other borrowers,bank,recall_fpr05,.1589021043000915,27325,452892
+young,0,Other borrowers,bank,recall_fpr10,.1589021043000915,27325,452892
+young,0,Other borrowers,bank,precision_top05,.18277840835754,27325,452892
+young,0,Other borrowers,bank,lift_top05,3.212197581929837,27325,452892
+young,0,Other borrowers,bank,precision_top10,.1273305415568655,27325,452892
+young,0,Other borrowers,bank,lift_top10,2.237741653241108,27325,452892
+young,0,Other borrowers,jv,n,480217,27325,452892
+young,0,Other borrowers,jv,prevalence,.0569013591772053,27325,452892
+young,0,Other borrowers,jv,auc,.7709816421113697,27325,452892
+young,0,Other borrowers,jv,average_precision,.1672970940892716,27325,452892
+young,0,Other borrowers,jv,log_loss,.2011219259318207,27325,452892
+young,0,Other borrowers,jv,brier,.0513122930323154,27325,452892
+young,0,Other borrowers,jv,recall_fpr05,.232644098810613,27325,452892
+young,0,Other borrowers,jv,recall_fpr10,.3895333943275389,27325,452892
+young,0,Other borrowers,jv,precision_top05,.2239900041649313,27325,452892
+young,0,Other borrowers,jv,lift_top05,3.936461402747331,27325,452892
+young,0,Other borrowers,jv,precision_top10,.201974136315362,27325,452892
+young,0,Other borrowers,jv,lift_top10,3.549548538662551,27325,452892
+young,1,Young,bank,n,43220,4753,38467
+young,1,Young,bank,prevalence,.1099722350763535,4753,38467
+young,1,Young,bank,auc,.6658900007417061,4753,38467
+young,1,Young,bank,average_precision,.180267114898731,4753,38467
+young,1,Young,bank,log_loss,.3349094203042174,4753,38467
+young,1,Young,bank,brier,.0958459072292868,4753,38467
+young,1,Young,bank,recall_fpr05,.1426467494214181,4753,38467
+young,1,Young,bank,recall_fpr10,.1973490427098674,4753,38467
+young,1,Young,bank,precision_top05,.2596020360944007,4753,38467
+young,1,Young,bank,lift_top05,2.360614348832316,4753,38467
+young,1,Young,bank,precision_top10,.2299665078710642,4753,38467
+young,1,Young,bank,lift_top10,2.091132436395412,4753,38467
+young,1,Young,jv,n,43220,4753,38467
+young,1,Young,jv,prevalence,.1099722350763535,4753,38467
+young,1,Young,jv,auc,.7475497850228754,4753,38467
+young,1,Young,jv,average_precision,.2449493693387184,4753,38467
+young,1,Young,jv,log_loss,.320213431932048,4753,38467
+young,1,Young,jv,brier,.0928963885449416,4753,38467
+young,1,Young,jv,recall_fpr05,.1765200925731117,4753,38467
+young,1,Young,jv,recall_fpr10,.336208710288239,4753,38467
+young,1,Young,jv,precision_top05,.3105043961129107,4753,38467
+young,1,Young,jv,lift_top05,2.823479907426889,4753,38467
+young,1,Young,jv,precision_top10,.2954650624710782,4753,38467
+young,1,Young,jv,lift_top10,2.686724174205765,4753,38467
+female,0,Male,bank,n,211128,13546,197582
+female,0,Male,bank,prevalence,.0641601303474669,13546,197582
+female,0,Male,bank,auc,.6918367289079579,13546,197582
+female,0,Male,bank,average_precision,.1290719620467891,13546,197582
+female,0,Male,bank,log_loss,.2292573760236845,13546,197582
+female,0,Male,bank,brier,.0589445246480713,13546,197582
+female,0,Male,bank,recall_fpr05,.1443230473940647,13546,197582
+female,0,Male,bank,recall_fpr10,.2622914513509523,13546,197582
+female,0,Male,bank,precision_top05,.1747910209448671,13546,197582
+female,0,Male,bank,lift_top05,2.72429342020138,13546,197582
+female,0,Male,bank,precision_top10,.1507673361121637,13546,197582
+female,0,Male,bank,lift_top10,2.34986019036534,13546,197582
+female,0,Male,jv,n,211128,13546,197582
+female,0,Male,jv,prevalence,.0641601303474669,13546,197582
+female,0,Male,jv,auc,.7844556872644274,13546,197582
+female,0,Male,jv,average_precision,.1943195274957003,13546,197582
+female,0,Male,jv,log_loss,.2152943414894866,13546,197582
+female,0,Male,jv,brier,.056551824915125,13546,197582
+female,0,Male,jv,recall_fpr05,.2349771150155027,13546,197582
+female,0,Male,jv,recall_fpr10,.3826221762882032,13546,197582
+female,0,Male,jv,precision_top05,.2652519893899205,13546,197582
+female,0,Male,jv,lift_top05,4.134218368220517,13546,197582
+female,0,Male,jv,precision_top10,.2105437665782493,13546,197582
+female,0,Male,jv,lift_top10,3.281535829775035,13546,197582
+female,1,Female,bank,n,312309,18532,293777
+female,1,Female,bank,prevalence,.0593386677937555,18532,293777
+female,1,Female,bank,auc,.6822890322672164,18532,293777
+female,1,Female,bank,average_precision,.1133768017588657,18532,293777
+female,1,Female,bank,log_loss,.2191971605047396,18532,293777
+female,1,Female,bank,brier,.0551041566735697,18532,293777
+female,1,Female,bank,recall_fpr05,.1322037556658753,18532,293777
+female,1,Female,bank,recall_fpr10,.2475717677530758,18532,293777
+female,1,Female,bank,precision_top05,.1485750880563561,18532,293777
+female,1,Female,bank,lift_top05,2.503849405125864,18532,293777
+female,1,Female,bank,precision_top10,.1341978866474544,18532,293777
+female,1,Female,bank,lift_top10,2.261558805362607,18532,293777
+female,1,Female,jv,n,312309,18532,293777
+female,1,Female,jv,prevalence,.0593386677937555,18532,293777
+female,1,Female,jv,auc,.7648177001724572,18532,293777
+female,1,Female,jv,average_precision,.1599035421176637,18532,293777
+female,1,Female,jv,log_loss,.2080219548694142,18532,293777
+female,1,Female,jv,brier,.0535250141537107,18532,293777
+female,1,Female,jv,recall_fpr05,.1962551262680768,18532,293777
+female,1,Female,jv,recall_fpr10,.3278113533347723,18532,293777
+female,1,Female,jv,precision_top05,.212616074287544,18532,293777
+female,1,Female,jv,lift_top05,3.58309483836977,18532,293777
+female,1,Female,jv,precision_top10,.1713416586615434,18532,293777
+female,1,Female,jv,lift_top10,2.887521156644072,18532,293777
+low_income,0,Brackets 2-8,bank,n,189125,9230,179895
+low_income,0,Brackets 2-8,bank,prevalence,.0488037012557832,9230,179895
+low_income,0,Brackets 2-8,bank,auc,.7076260944562708,9230,179895
+low_income,0,Brackets 2-8,bank,average_precision,.1149012342319048,9230,179895
+low_income,0,Brackets 2-8,bank,log_loss,.1872604320589637,9230,179895
+low_income,0,Brackets 2-8,bank,brier,.0456603177081311,9230,179895
+low_income,0,Brackets 2-8,bank,recall_fpr05,.1676056338028169,9230,179895
+low_income,0,Brackets 2-8,bank,recall_fpr10,.3240520043336945,9230,179895
+low_income,0,Brackets 2-8,bank,precision_top05,.1519670050761421,9230,179895
+low_income,0,Brackets 2-8,bank,lift_top05,3.113841802277939,9230,179895
+low_income,0,Brackets 2-8,bank,precision_top10,.1423963620981387,9230,179895
+low_income,0,Brackets 2-8,bank,lift_top10,2.917736942774701,9230,179895
+low_income,0,Brackets 2-8,jv,n,189125,9230,179895
+low_income,0,Brackets 2-8,jv,prevalence,.0488037012557832,9230,179895
+low_income,0,Brackets 2-8,jv,auc,.7875555742053546,9230,179895
+low_income,0,Brackets 2-8,jv,average_precision,.1737481553817224,9230,179895
+low_income,0,Brackets 2-8,jv,log_loss,.1763579730347243,9230,179895
+low_income,0,Brackets 2-8,jv,brier,.0437858468175059,9230,179895
+low_income,0,Brackets 2-8,jv,recall_fpr05,.2822318526543879,9230,179895
+low_income,0,Brackets 2-8,jv,recall_fpr10,.476489707475623,9230,179895
+low_income,0,Brackets 2-8,jv,precision_top05,.2339255499153976,9230,179895
+low_income,0,Brackets 2-8,jv,lift_top05,4.793192809073627,9230,179895
+low_income,0,Brackets 2-8,jv,precision_top10,.2036273265651438,9230,179895
+low_income,0,Brackets 2-8,jv,lift_top10,4.172374662690447,9230,179895
+low_income,1,Bracket 1,bank,n,334312,22848,311464
+low_income,1,Bracket 1,bank,prevalence,.0683433439421857,22848,311464
+low_income,1,Bracket 1,bank,auc,.6520586738229621,22848,311464
+low_income,1,Bracket 1,bank,average_precision,.1166919703505888,22848,311464
+low_income,1,Bracket 1,bank,log_loss,.2436175431095852,22848,311464
+low_income,1,Bracket 1,bank,brier,.0628719761178588,22848,311464
+low_income,1,Bracket 1,bank,recall_fpr05,.1123949579831933,22848,311464
+low_income,1,Bracket 1,bank,recall_fpr10,.2251838235294118,22848,311464
+low_income,1,Bracket 1,bank,precision_top05,.1600129870835598,22848,311464
+low_income,1,Bracket 1,bank,lift_top05,2.341310475222297,22848,311464
+low_income,1,Bracket 1,bank,precision_top10,.1390326343812629,22848,311464
+low_income,1,Bracket 1,bank,lift_top10,2.034325895713794,22848,311464
+low_income,1,Bracket 1,jv,n,334312,22848,311464
+low_income,1,Bracket 1,jv,prevalence,.0683433439421857,22848,311464
+low_income,1,Bracket 1,jv,auc,.7544698389985104,22848,311464
+low_income,1,Bracket 1,jv,average_precision,.1711741998429603,22848,311464
+low_income,1,Bracket 1,jv,log_loss,.2305274437744143,22848,311464
+low_income,1,Bracket 1,jv,brier,.0609461193635016,22848,311464
+low_income,1,Bracket 1,jv,recall_fpr05,.1926207983193277,22848,311464
+low_income,1,Bracket 1,jv,recall_fpr10,.3117997198879552,22848,311464
+low_income,1,Bracket 1,jv,precision_top05,.2223152856715525,22848,311464
+low_income,1,Bracket 1,jv,lift_top05,3.252917882678049,22848,311464
+low_income,1,Bracket 1,jv,precision_top10,.1896443420777123,22848,311464
+low_income,1,Bracket 1,jv,lift_top10,2.774876544497731,22848,311464
+bank_exposure,0,No bank exposure,bank,n,123568,9307,114261
+bank_exposure,0,No bank exposure,bank,prevalence,.0753188527774181,9307,114261
+bank_exposure,0,No bank exposure,bank,auc,.5551118214986065,9307,114261
+bank_exposure,0,No bank exposure,bank,average_precision,.0918167994449498,9307,114261
+bank_exposure,0,No bank exposure,bank,log_loss,.2647234409423867,9307,114261
+bank_exposure,0,No bank exposure,bank,brier,.0692475337623751,9307,114261
+bank_exposure,0,No bank exposure,bank,recall_fpr05,.0759643279252176,9307,114261
+bank_exposure,0,No bank exposure,bank,recall_fpr10,.1842699043730525,9307,114261
+bank_exposure,0,No bank exposure,bank,precision_top05,.1372093167560068,9307,114261
+bank_exposure,0,No bank exposure,bank,lift_top05,1.821712781014961,9307,114261
+bank_exposure,0,No bank exposure,bank,precision_top10,.1376347638358559,9307,114261
+bank_exposure,0,No bank exposure,bank,lift_top10,1.827361394398737,9307,114261
+bank_exposure,0,No bank exposure,jv,n,123568,9307,114261
+bank_exposure,0,No bank exposure,jv,prevalence,.0753188527774181,9307,114261
+bank_exposure,0,No bank exposure,jv,auc,.7589235980623791,9307,114261
+bank_exposure,0,No bank exposure,jv,average_precision,.1776429544342057,9307,114261
+bank_exposure,0,No bank exposure,jv,log_loss,.2462111065774684,9307,114261
+bank_exposure,0,No bank exposure,jv,brier,.066696680307252,9307,114261
+bank_exposure,0,No bank exposure,jv,recall_fpr05,.1669710970237456,9307,114261
+bank_exposure,0,No bank exposure,jv,recall_fpr10,.2819383259911895,9307,114261
+bank_exposure,0,No bank exposure,jv,precision_top05,.2113952735513111,9307,114261
+bank_exposure,0,No bank exposure,jv,lift_top05,2.806671447532869,9307,114261
+bank_exposure,0,No bank exposure,jv,precision_top10,.1931045645840078,9307,114261
+bank_exposure,0,No bank exposure,jv,lift_top10,2.563827746482934,9307,114261
+bank_exposure,1,Bank exposure,bank,n,399869,22771,377098
+bank_exposure,1,Bank exposure,bank,prevalence,.0569461498640805,22771,377098
+bank_exposure,1,Bank exposure,bank,auc,.6948951622866093,22771,377098
+bank_exposure,1,Bank exposure,bank,average_precision,.1202170762867711,22771,377098
+bank_exposure,1,Bank exposure,bank,log_loss,.2104402970343646,22771,377098
+bank_exposure,1,Bank exposure,bank,brier,.052761240342499,22771,377098
+bank_exposure,1,Bank exposure,bank,recall_fpr05,.1465899609151992,22771,377098
+bank_exposure,1,Bank exposure,bank,recall_fpr10,.2855386236880242,22771,377098
+bank_exposure,1,Bank exposure,bank,precision_top05,.156454759165708,22771,377098
+bank_exposure,1,Bank exposure,bank,lift_top05,2.747415927839466,22771,377098
+bank_exposure,1,Bank exposure,bank,precision_top10,.1440504176461762,22771,377098
+bank_exposure,1,Bank exposure,bank,lift_top10,2.529590112588767,22771,377098
+bank_exposure,1,Bank exposure,jv,n,399869,22771,377098
+bank_exposure,1,Bank exposure,jv,prevalence,.0569461498640805,22771,377098
+bank_exposure,1,Bank exposure,jv,auc,.7698611588745454,22771,377098
+bank_exposure,1,Bank exposure,jv,average_precision,.1695335871370999,22771,377098
+bank_exposure,1,Bank exposure,jv,log_loss,.2000604658419123,22771,377098
+bank_exposure,1,Bank exposure,jv,brier,.0510528246595891,22771,377098
+bank_exposure,1,Bank exposure,jv,recall_fpr05,.2307759870010101,22771,377098
+bank_exposure,1,Bank exposure,jv,recall_fpr10,.3913310790039963,22771,377098
+bank_exposure,1,Bank exposure,jv,precision_top05,.2284799679887961,22771,377098
+bank_exposure,1,Bank exposure,jv,lift_top05,4.01221098413385,22771,377098
+bank_exposure,1,Bank exposure,jv,precision_top10,.1956434752163257,22771,377098
+bank_exposure,1,Bank exposure,jv,lift_top10,3.43558740464964,22771,377098
