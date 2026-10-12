@@ -1,198 +1,198 @@
 # Credit Default Prediction
 
-Stata analysis of whether JV nonbank issuer (NBI) credit information improves default prediction beyond demographics and bank credit information. The project adapts slides 26–28 of *Information Sharing Regimes and Access to Credit* and adds SHAP explanations.
+This project studies whether JV NBI credit information improves default prediction beyond bank information. It reproduces the requested regression table, ROC curves, permutation importance and SHAP analysis, then evaluates performance using additional metrics.
 
-## Project status
+The current specification replaces continuous age with **Young**. The original age-based analysis is retained in the main project folders; the updated analysis and findings are under `young/`.
 
-| Task | Status | Main result |
-|---|---|---|
-| Revised three-column logit table | Complete | Adding credit information improves fit and reduces the remaining low-income association. |
-| ROC curves and AUC with a 70/30 split | Complete | Test AUC increases from 0.679 to 0.767 with JV information. |
-| Permutation importance | Complete; age check passed | JV limits and balances have the largest importance in the expanded model. |
-| SHAP summary plot | Complete; prediction reconstruction checked | Higher JV limits lower model risk contributions; higher JV balances raise them. |
-| Additional evaluation metrics | Proposed | Average precision, probability quality, calibration, ablation, and uncertainty analysis remain to be implemented. |
+## Data and definitions
 
-## Requirements
+The input is `data/raw/pre_sample.dta`. December 2014 borrower and credit information is used to predict `def90_target`, indicating any 90-day-or-more default during January–May 2015.
 
-- StataMP 18.
-- VS Code is optional. The project was developed with Stata Workbench and Stata All in One.
-- The supplied `pre_sample.dta` in `data/raw/`.
+| Variable | Definition |
+|---|---|
+| `young` | One if age is strictly below the 10th percentile of the training-sample age distribution; zero otherwise. |
+| `female` | Female indicator. |
+| `low_income` | One for income bracket 1; zero for brackets 2–8. |
+| `bk_limit_2014m12` | Bank credit limit in December 2014. |
+| `bk_balance_2014m12` | Bank outstanding credit balance in December 2014. |
+| `cenco_limit_2014m12` | JV NBI credit limit in December 2014. |
+| `cenco_balance_2014m12` | JV NBI outstanding credit balance in December 2014. |
 
-The analysis scripts use built-in Stata and Mata functionality. No Python integration or third-party Stata packages are required.
+JV means joint venture; NBI means non-bank institution. These variables represent credit information from the institution involved in the JV, rather than a separate credit score.
+
+In the supplied prepared input, credit amounts are already in millions of Chilean pesos and `age2014` is already measured in decades. Do not rescale them again.
+
+The analysis excludes missing required inputs and income/gender values coded `9999`. The complete analysis sample contains 1,744,787 borrowers. The outcome-stratified 70/30 split assigns 1,221,350 borrowers to training and 523,437 to testing, using seed `20261011`.
+
+The training age cutoff is 31 years. Because Young uses a strict inequality and ages are tied, it identifies borrowers under 31 and covers approximately 8.28% of the complete sample, rather than exactly 10%.
 
 ## Folder structure
 
 ```text
 credit-default/
 ├── README.md
-├── code/
-│   ├── 00_config.do
-│   ├── 01_prepare_data.do
-│   ├── 02_logit_table.do
-│   ├── 03_roc_auc.do
-│   ├── 04_permutation_importance.do
-│   ├── 04_validate_age_importance.do
-│   └── 05_shap.do
+├── .gitignore
+├── code/                      # Original age-based scripts
 ├── data/
-│   ├── raw/                  # Original data; unchanged
-│   └── derived/              # Prepared sample, split, predictions, SHAP values
-├── reference/                # Original slides and supplied code
-├── models/                   # Saved fitted models (.ster)
-├── outputs/
-│   ├── tables/
-│   ├── figures/
-│   └── metrics/
-└── logs/                     # Preparation, estimation, and validation records
+│   ├── raw/pre_sample.dta     # Original input
+│   └── derived/               # Original analysis data
+├── models/                    # Original saved estimates
+├── outputs/                   # Original tables, figures and metrics
+├── logs/                      # Original execution logs
+├── reference/                 # Slide deck and supplied reference code
+└── young/
+    ├── code/                  # Young specification: tasks 1–4
+    ├── proposal/              # Additional evaluation scripts
+    ├── data/derived/          # Prepared sample, split and predictions
+    ├── models/                # Saved Young, screening and ablation models
+    ├── logs/                  # One text log per analysis stage
+    └── outputs/
+        ├── tables/
+        ├── figures/
+        │   └── proposal/
+        └── metrics/
+            └── proposal/
 ```
 
-Generated folders and files are created by the scripts. An earlier `02_format_table.do` may also be present; it is no longer needed because formatting is included in `02_logit_table.do`.
+Derived datasets are generated by the scripts. Logs record commands, model output and validation checks. `.ster` files retain fitted model estimates; PNG files are for reports, and `.gph` files retain editable Stata graphs.
 
-## Running the analysis
+## Tasks and scripts
 
-Enter these commands in **Stata's Command window**, not the macOS terminal. Replace the project path if your checkout is elsewhere.
+| Script | Purpose |
+|---|---|
+| `young/code/00_config.do` | Defines project paths and creates output folders. |
+| `young/code/01_prepare_data.do` | Prepares the complete sample, reuses or creates the split, and defines Young using training ages. |
+| `young/code/02_logit_table.do` | Produces the revised three-column regression table. Calls preparation automatically. |
+| `young/code/03_roc_auc.do` | Fits bank and bank + JV models on training borrowers and evaluates ROC/AUC on test borrowers. |
+| `young/code/04_permutation_importance.do` | Shuffles individual test predictors and measures the decrease in AUC without refitting. |
+| `young/code/05_shap.do` | Calculates exact interventional SHAP contributions for the additive logistic score and produces plots. Contributions are in log-odds, not probability percentage points. |
+| `young/code/run_all.do` | Runs tasks 1–4 in order. |
+| `young/proposal/06_helpers.do` | Shared calculations and input checks; loaded automatically. |
+| `young/proposal/06a_performance_calibration.do` | Additional performance metrics, precision–recall curve and calibration diagnostics. |
+| `young/proposal/06b_screening_validation.do` | Selects thresholds on internal validation data and evaluates screening on test borrowers. |
+| `young/proposal/06c_jv_ablation.do` | Compares bank alone, bank + JV limit, bank + JV balance and bank + both. |
+| `young/proposal/06d_grouped_permutation.do` | Jointly shuffles demographic, bank and JV information groups. |
+| `young/proposal/06e_subgroups.do` | Compares performance by age, Young status, gender, income and bank exposure. |
+| `young/proposal/06f_paired_bootstrap.do` | Calculates confidence intervals for paired test-sample performance differences. |
+| `young/proposal/06_run_proposal.do` | Runs all proposal analyses in order. |
+
+The regression table uses these columns, with variables listed in this order:
+
+1. Young, female and low income.
+2. Column 1 plus bank limit and bank balance.
+3. Column 2 plus JV NBI limit and JV NBI balance.
+
+## Running the project
+
+Use StataMP 18. VS Code can be used to edit the do-files with Stata Workbench or Stata All in One. Run the following commands in Stata, not the macOS shell.
+
+Run the Young tasks:
 
 ```stata
 cd "/Users/nate/PROJECTS/RESEARCH/credit-default"
-do "code/02_logit_table.do"
-do "code/03_roc_auc.do"
-do "code/04_permutation_importance.do"
-do "code/04_validate_age_importance.do"
-do "code/05_shap.do"
+do "young/code/run_all.do"
 ```
 
-Run each script as a whole file. In VS Code, use your configured Stata extension to execute the complete do-file after setting Stata's working directory.
-
-- `02` calls `01`, which calls `00`, to prepare the sample and estimate the table.
-- `03` loads configuration and runs preparation only if the prepared sample is absent.
-- `04` and `05` require the models and test data saved by `03`.
-- The age validation script requires the repetition results saved by `04`.
-- Reruns replace generated outputs. The original dataset is not modified.
-
-To run a script from another working directory, provide its full path and pass the project root as its first argument. For example:
+Once the Young models, split and test predictions exist, run the proposal:
 
 ```stata
-do "/Users/nate/PROJECTS/RESEARCH/credit-default/code/03_roc_auc.do" "/Users/nate/PROJECTS/RESEARCH/credit-default"
+do "young/proposal/06_run_proposal.do"
 ```
 
-If preparation changes the analysis sample, existing split assignments must be reviewed before rerunning later tasks. The scripts stop when assignments do not match the sample.
+The proposal wrapper defaults to 200 bootstrap repetitions and 20 permutations per information group. For a complete proposal run with 1,000 bootstrap repetitions:
 
-## Data and model specifications
-
-Each observation represents a borrower. December 2014 predictors are used to predict any 90+ default during January–May 2015 (`def90_target`).
-
-| Predictor | Dataset variable | Interpretation |
-|---|---|---|
-| Age | `age2014` | Decades; 4.9 corresponds to about 49 years |
-| Female | `female` | 1 = female; 0 = male |
-| Low income | `low_income` | 1 = income bracket 1; 0 = brackets 2–8 |
-| Bank limit | `bk_limit_2014m12` | Millions of CLP |
-| Bank balance | `bk_balance_2014m12` | Millions of CLP |
-| JV NBI limit | `cenco_limit_2014m12` | Millions of CLP |
-| JV NBI balance | `cenco_balance_2014m12` | Millions of CLP |
-
-The supplied data are already scaled. Do not rescale age or credit amounts again. Unknown income and gender codes (`9999`) are excluded. All models use a common complete-case sample.
-
-- Original sample: **1,901,685 borrowers**.
-- Prepared sample: **1,744,787 borrowers**.
-- Prepared-sample default rate: approximately **6.13%**.
-
-The three task 1 specifications are:
-
-1. Age, female, and low income.
-2. Model 1 plus bank limit and balance.
-3. Model 2 plus JV NBI limit and balance.
-
-Geographic controls and maxed-out exposure are excluded from these revised specifications.
-
-## Methods and findings
-
-### Task 1: Logit table
-
-The table uses the full prepared sample. It reports average marginal effects in percentage points, conventional delta-method standard errors, default mean, observations, and McFadden pseudo R-squared. Binary effects compare 1 with 0.
-
-The low-income effect declines from 2.45 to 0.86 to 0.14 percentage points across the three models. Pseudo R-squared increases from 0.022 to 0.041 to 0.090. Larger limits are associated with lower predicted default risk and larger balances with higher risk, holding other predictors fixed.
-
-Continuous marginal effects are local slopes, not fixed probability changes for large increases in a predictor. These associations are not causal effects.
-
-### Task 2: Held-out ROC/AUC
-
-The split assigns approximately 70% of each outcome class to training and 30% to testing, using seed `20261011` and sorted borrower IDs. Assignments are saved and reused.
-
-- Training: **1,221,350 borrowers**.
-- Testing: **523,437 borrowers**.
-- Bank-information test AUC: **0.678690**.
-- Bank + JV test AUC: **0.766925**.
-- AUC improvement: **0.088235**.
-
-Models are fitted only on training borrowers. AUC uses all test observations and gives half credit to ties; displayed curves use approximately 2,000 points each. AUC measures ranking, not classification accuracy. No AUC confidence intervals have yet been estimated.
-
-![Test ROC curves](outputs/figures/task2_roc.png)
-
-### Task 3: Permutation importance
-
-Each predictor is shuffled across test borrowers 20 times using seed `20261012`. Native Stata `predict, mu` recalculates probabilities with the fitted model unchanged. Importance is baseline AUC minus shuffled AUC, averaged over repetitions.
-
-In the expanded model, mean AUC drops are approximately 0.1754 for JV limits and 0.1198 for JV balances. Age importance is approximately 0.0827 in the bank-only model and 0.0274 in the expanded model.
-
-The validation script checks the first age permutation in each model using native predictions and an independent average-rank AUC calculation. Both checks passed. Use the updated native-prediction version of `04`; earlier algebraic versions produced small rounding differences around tied scores.
-
-Permutation importance measures model reliance. Correlated predictors complicate attribution, drops are not additive, and shuffle standard deviations are not confidence intervals.
-
-![Permutation importance](outputs/figures/task3_permutation.png)
-
-### Task 4: SHAP
-
-The expanded model is explained using exact interventional SHAP on its additive log-odds scale:
-
-```text
-SHAP_j = coefficient_j × (borrower value_j − training mean_j)
+```stata
+do "young/proposal/06_run_proposal.do" "/Users/nate/PROJECTS/RESEARCH/credit-default" 1000 20
 ```
 
-The reference plus the contributions reconstructs every test model score and probability. Global rankings use all test borrowers. Plots show 4,000 sampled borrowers with vertical jitter; colors distinguish values below versus at/above the training mean.
+To rerun only the bootstrap:
 
-JV limits and balances have the largest mean absolute contributions. The central plot shows contributions between −3 and 3; a separate full-range plot retains extreme sampled dots. No observations are excluded from global calculations.
+```stata
+do "young/proposal/06f_paired_bootstrap.do" "/Users/nate/PROJECTS/RESEARCH/credit-default/young" 1000
+```
 
-SHAP values are not probability percentage points, causal effects, or correlation-dependent attributions. Their ranking can differ from permutation importance because they explain predictions rather than changes in AUC.
+Individual proposal scripts take the `young/` project path; the wrapper takes the parent `credit-default/` path. Reruns replace the corresponding output files and logs. The reported confidence intervals below use the completed 1,000-repetition bootstrap.
 
-![SHAP summary](outputs/figures/task4_shap.png)
+The corrected proposal scripts check `e(rc)==0` after `glm, irls`. They do not use `e(converged)` for IRLS estimation. If a validation check fails, inspect the first failing command and its log before changing the check.
 
-[Full-range SHAP plot](outputs/figures/task4_shap_full.png)
+## Findings: Young specification
 
-Method: [SHAP LinearExplainer documentation](https://shap.readthedocs.io/en/latest/generated/shap.LinearExplainer.html).
+Both main prediction models are evaluated on the same 523,437 test borrowers, with a default rate of 6.13%.
 
-## Main outputs
+| Measure | Bank information | Bank + JV information |
+|---|---:|---:|
+| AUC | 0.6744 | 0.7691 |
+| Average precision | 0.1146 | 0.1720 |
+| Log loss | 0.2233 | 0.2110 |
+| Brier score | 0.05665 | 0.05475 |
+| Precision among highest-risk 5% | 16.11% | 22.48% |
+| Precision among highest-risk 10% | 14.24% | 19.51% |
 
-| Location | Contents |
-|---|---|
-| `outputs/tables/task1_table.xlsx` | Readable regression table |
-| `outputs/tables/task1_marginal_effects.csv` | Numeric effects and model statistics |
-| `outputs/metrics/task2_auc.csv` | Test AUC comparison |
-| `outputs/metrics/task3_permutation_summary.csv` | Mean AUC drops and shuffle standard deviations |
-| `outputs/metrics/task3_permutation_repetitions.dta` | All 240 permutation results |
-| `outputs/metrics/task3_age_validation.csv` | Independent age checks |
-| `outputs/metrics/task4_shap_summary.csv` | SHAP reference means, coefficients, and importance ranking |
-| `data/derived/task4_shap_values.dta` | Borrower-level SHAP contributions |
-| `outputs/figures/` | PNG and editable Stata GPH plots |
-| `models/` | Task 1 full-sample and task 2 training-fitted models |
-| `logs/` | Execution and validation records |
+Higher AUC, average precision and screening precision are better. Lower log loss and Brier score are better. Average precision improves by approximately 50%; log loss falls by 5.5% and Brier score by 3.4%.
 
-## Proposed next steps
+### Contribution of JV information
 
-A future `06_performance_metrics.do` would evaluate:
+| Model | Test AUC |
+|---|---:|
+| Bank information | 0.6744 |
+| Bank + JV limit | 0.6885 |
+| Bank + JV balance | 0.6808 |
+| Bank + both JV variables | 0.7691 |
 
-- **Average precision:** default detection when defaults are uncommon.
-- **Log loss and Brier score:** quality of predicted probabilities.
-- **Calibration:** agreement between predicted risk and observed default rates.
-- **Recall at fixed false-positive rates and high-risk-group lift:** practical screening performance.
-- **JV-variable ablation:** incremental value of limits alone, balances alone, and both after refitting.
-- **Grouped permutation:** joint reliance on related limits and balances.
-- **Subgroup evaluation:** variation across age, gender, income, and bank exposure.
-- **Paired bootstrap intervals:** uncertainty around test-performance differences.
+JV limit and balance produce a much larger gain together than either produces alone. This suggests complementary predictive information; it does not establish a causal effect or an explicit interaction in the fitted model.
 
-These evaluations are proposed, not completed. Additional models must use the existing training sample; evaluation must use the same test borrowers. Operational thresholds should be selected using training-side validation rather than optimized on the test sample.
+Jointly shuffling JV limit and balance reduces the expanded model’s AUC by approximately 0.216. Its corresponding decreases for bank information and demographics are 0.037 and 0.008. Permutation importance measures reliance on inputs; these values do not add up to the original model improvement.
 
-## Interpretation and data management
+### Screening and subgroup results
 
-The results support the value of JV credit information in this borrower sample. They are not an exact replication of the slides: predictors, missing-value treatment, and evaluation procedures differ. The slide's near-zero age importance remains unresolved without its original importance code. The random split does not test performance in a later period or establish that information sharing causes changes in default or lending.
+At validation-selected thresholds targeting a 5% false-positive rate, the bank model detects 14.21% of defaulters and the expanded model detects 21.54%. Actual test false-positive rates are 4.98% and 4.94%.
 
-Keep original data unchanged and out of ordinary Git history. A root `.gitignore` entry of `data/` excludes raw and derived datasets from future tracking; it does not remove data already committed. The raw file exceeds GitHub's ordinary 100 MB file limit. Saved models and generated outputs can also be excluded if the repository is intended to contain only code and documentation.
+These supplementary screening models use an 80/20 split of the original training portion: roughly 56% of all borrowers for estimation, 14% for threshold selection and the original 30% for testing. Their results should be distinguished from the main models fitted on the entire 70% training portion.
+
+AUC improves in every reported subgroup. The largest gain is among borrowers with no recorded bank limit or balance, from 0.555 to 0.759. Subgroup comparisons are exploratory and do not include subgroup confidence intervals.
+
+### Calibration
+
+The expanded model’s joint calibration intercept is 0.0102 and slope is 1.0044, close to the ideal values of zero and one. However, the calibration bins reveal meaningful differences between predicted and observed risks.
+
+For its highest-risk tenth, mean predicted default is 14.78%, compared with an observed default rate of 19.51%. Several middle-risk bins show overprediction. Better overall probability performance should not be interpreted as perfect calibration.
+
+### Bootstrap uncertainty
+
+The paired borrower bootstrap uses 1,000 repetitions. All ten reported improvements have 95% percentile confidence intervals excluding zero. The AUC improvement is 0.0947, with an interval of 0.0922–0.0970.
+
+These intervals reflect test-borrower sampling uncertainty conditional on fitted models. They do not include uncertainty from refitting, selecting thresholds or transferring the model to another period or population.
+
+## Main proposal outputs
+
+Summary files are in `young/outputs/metrics/proposal/`:
+
+- `performance_comparison.csv`: main model performance and changes.
+- `calibration_parameters.csv` and `calibration_bins.csv`: overall and grouped calibration diagnostics.
+- `screening_test_results.csv` and `screening_validation_thresholds.csv`: validation-selected screening results and cutoffs.
+- `jv_ablation_comparison.csv`: contribution of each JV variable and both together.
+- `grouped_permutation_summary.csv`: average deterioration after joint shuffling.
+- `subgroup_comparison.csv`: within-group model comparisons.
+- `bootstrap_confidence_intervals.csv`: final uncertainty estimates.
+
+Graphs are in `young/outputs/figures/proposal/`:
+
+![Precision–recall](young/outputs/figures/proposal/precision_recall.png)
+
+![Grouped permutation importance](young/outputs/figures/proposal/grouped_permutation.png)
+
+![Calibration](young/outputs/figures/proposal/calibration.png)
+
+For reporting, focus both calibration axes on approximately 0–25% so differences are visible. Regenerating the calibration stage restores its original 0–100% plot unless the plotting command in 06a is also updated.
+
+## Interpretation and reproducibility
+
+- These results establish predictive value within the held-out sample, rather than causal effects on repayment or measured lending profitability.
+- Average precision uses distinct prediction thresholds with ties grouped. It is not trapezoidal area under the precision–recall curve.
+- Top-5%/10% precision uses expected random selection within a tied cutoff group to maintain screening capacity.
+- Test-curve recall at fixed false-positive rates is descriptive. Operational thresholds are selected separately using validation borrowers.
+- Grouped permutation preserves relationships within each shuffled group but disrupts relationships with other groups. Shuffle standard deviations are not confidence intervals.
+- SHAP contributions explain the fitted model’s log-odds predictions and depend on the training reference distribution.
+- The analysis uses a random borrower split, not validation on a later period.
+- Raw data should be retained locally and excluded from Git. The input exceeds GitHub’s ordinary file-size limit. Adding `data/` to `.gitignore` does not remove data already committed to history. Also exclude generated borrower-level data under `young/data/` where appropriate.
+- Keep source scripts, data definitions, seeds and logs together so the findings can be reproduced.
